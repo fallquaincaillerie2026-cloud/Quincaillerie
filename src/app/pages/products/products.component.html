@@ -1,0 +1,16 @@
+<h2>Liste des produits</h2>
+
+<div *ngIf="loading">
+  Chargement...
+</div>
+
+<div *ngIf="!loading && products.length === 0">
+  Aucun produit disponible.
+</div>
+
+<div *ngFor="let item of products" class="product-card">
+  <img [src]="item.image_url" width="150" alt="">
+  <h3>{{ item.name }}</h3>
+  <p>{{ item.description }}</p>
+  <strong>{{ item.price }} FCFA</strong>
+</div>

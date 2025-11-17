@@ -1,0 +1,7 @@
+.product-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8px;
+}
+.actions button { margin-right: 8px; }
+.delete { background: #d9534f; color: white; border: none; padding: 6px 8px; }

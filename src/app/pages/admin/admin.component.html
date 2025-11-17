@@ -1,0 +1,29 @@
+<h2>Administration des produits</h2>
+
+<button (click)="openAdd()">➕ Ajouter un produit</button>
+<button (click)="loadProducts()" style="margin-left:8px;">🔄 Rafraîchir</button>
+
+<div *ngIf="loading">Chargement...</div>
+
+<!-- FORMULAIRE intégré -->
+<div *ngIf="showForm" style="margin-top:12px;">
+  <app-product-form
+    [product]="editingProduct"
+    (saved)="handleFormEvent({ type: 'save', payload: $event })"
+    (cancelled)="handleFormEvent({ type: 'cancel' })"
+  ></app-product-form>
+</div>
+
+<hr>
+
+<div *ngIf="products.length === 0">Aucun produit.</div>
+
+<div *ngFor="let p of products" class="product-item">
+  <strong>{{ p.name }}</strong> — {{ p.price }} FCFA
+  <p>{{ p.description }}</p>
+
+  <div class="actions">
+    <button (click)="openEdit(p)">Modifier</button>
+    <button (click)="deleteProduct(p.id)" class="delete">Supprimer</button>
+  </div>
+</div>
