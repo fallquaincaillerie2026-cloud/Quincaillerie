@@ -13,4 +13,13 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'admin', component: AdminComponent },
     { path: 'admin/edit/:id', component: ProductFormComponent },
+    { path: 'admin/add', component: ProductFormComponent },
+    {
+  path: 'product/:id',
+  loadComponent: () =>
+    import('./pages/product-detail/product-detail.component').then(
+      (m) => m.ProductDetailComponent
+    ),
+},
+
 ];

@@ -1,1 +1,43 @@
-<p>home works!</p>
+<div class="hero">
+  <div class="hero-content">
+    <h1>Découvrez Nos Produits Exclusifs</h1>
+    <p>Qualité premium, prix imbattables. Explorez notre catalogue dès maintenant.</p>
+    <button class="btn-primary">Voir les produits</button>
+  </div>
+  <div class="hero-image">
+    <img src="home-hero.png"alt="Hero Image" />
+  </div>
+</div>
+
+<section class="features">
+  <div class="feature-card">
+    <i class="icon">🚚</i>
+    <h3>Livraison rapide</h3>
+    <p>Recevez vos commandes en un temps record partout dans le pays.</p>
+  </div>
+  
+  <div class="feature-card">
+    <i class="icon">⭐</i>
+    <h3>Qualité Premium</h3>
+    <p>Nous sélectionnons des produits durables et fiables.</p>
+  </div>
+
+  <div class="feature-card">
+    <i class="icon">💳</i>
+    <h3>Paiement sécurisé</h3>
+    <p>Transactions 100% protégées et cryptées.</p>
+  </div>
+</section>
+
+<section class="products-preview">
+  <h2>Nos Produits Populaires</h2>
+
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let product of popularProducts">
+      <img [src]="product.image_url" alt="" />
+      <h4>{{ product.name }}</h4>
+      <p>{{ product.price }} €</p>
+      <button class="btn-secondary">Voir</button>
+    </div>
+  </div>
+</section>

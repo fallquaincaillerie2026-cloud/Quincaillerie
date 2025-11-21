@@ -1,0 +1,21 @@
+<div *ngIf="loading">Chargement...</div>
+
+<div *ngIf="!loading && product">
+
+  <h2>{{ product.name }}</h2>
+
+  <img 
+      [src]="product.image_url || 'https://via.placeholder.com/500?text=No+Image'" 
+      alt="Produit" 
+      width="300"
+  />
+
+  <h3>{{ product.price }} FCFA</h3>
+
+  <p>{{ product.description }}</p>
+
+</div>
+
+<div *ngIf="!loading && !product">
+  <p>Produit introuvable.</p>
+</div>

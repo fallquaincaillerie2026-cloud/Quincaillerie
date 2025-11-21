@@ -8,9 +8,13 @@
   Aucun produit disponible.
 </div>
 
-<div *ngFor="let item of products" class="product-card">
-  <img [src]="item.image_url" width="150" alt="">
-  <h3>{{ item.name }}</h3>
-  <p>{{ item.description }}</p>
-  <strong>{{ item.price }} FCFA</strong>
+<div 
+  class="product-card" 
+  *ngFor="let p of products"
+  [routerLink]="['/product', p.id]"
+>
+  <img [src]="p.image_url" width="150" />
+  <h3>{{ p.name }}</h3>
+  <p>{{ p.price }} FCFA</p>
 </div>
+

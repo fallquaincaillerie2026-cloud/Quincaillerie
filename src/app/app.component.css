@@ -1,0 +1,256 @@
+/* Variables pour faciliter la gestion des couleurs et espacements */
+:root {
+  --primary-color: #0056b3; /* Bleu profond pour la marque */
+  --accent-color: #ff9800; /* Orange pour le bouton ou les accents */
+  --text-color: #343a40; /* Gris foncé pour le texte */
+  --light-gray: #f8f9fa; /* Arrière-plan clair */
+  --hover-link-color: #007bff; /* Bleu vif au survol */
+  --shadow-color: rgba(0, 0, 0, 0.08); /* Couleur de l'ombre */
+}
+
+.main-navbar {
+  display: flex; /* Utilise Flexbox pour un alignement facile */
+  justify-content: space-between; /* Espace entre les sections gauche, centre, droite */
+  align-items: center; /* Centre verticalement les éléments */
+  background-color: #ffffff; /* Fond blanc pour un look moderne */
+  padding: 1rem 2rem; /* Plus d'espace autour des éléments */
+  box-shadow: 0 4px 12px var(--shadow-color); /* Ombre douce pour la profondeur */
+  font-family: 'Montserrat', sans-serif; /* Exemple de police moderne, importez-la depuis Google Fonts si vous l'utilisez */
+  border-bottom: 3px solid var(--primary-color); /* Une ligne d'accent en bas */
+  position: sticky; /* Rends la navbar "collante" en haut */
+  top: 0;
+  z-index: 1000; /* Assure qu'elle est au-dessus des autres contenus */
+}
+
+/* Section gauche : Logo */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 1.6rem; /* Taille du texte du logo */
+  font-weight: 700; /* Gras pour le logo */
+  transition: color 0.3s ease; /* Transition douce au survol */
+}
+
+.brand-logo {
+  height: 45px; /* Taille de l'icône du logo */
+  margin-right: 10px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1)); /* Petite ombre sur le logo */
+}
+
+.brand-text {
+  letter-spacing: 0.5px; /* Espacement léger entre les lettres */
+}
+
+.navbar-brand:hover {
+  color: var(--hover-link-color);
+}
+
+/* Section centrale : Liens de navigation */
+.navbar-center {
+  flex-grow: 1; /* Permet à cette section de prendre l'espace disponible */
+  text-align: center; /* Centre les liens */
+}
+
+.navbar-links {
+  display: flex; /* Aligne les liens horizontalement */
+  list-style: none; /* Supprime les puces */
+  margin: 0;
+  padding: 0;
+  justify-content: center; /* Centre les liens dans la section */
+}
+
+.navbar-links li {
+  margin: 0 1.2rem; /* Espacement entre les liens */
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0.8rem 0; /* Padding vertical pour le click */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--hover-link-color);
+}
+
+/* Style pour le lien actif */
+.navbar-links a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.navbar-links a.active::after { /* Soulignement pour le lien actif */
+  content: '';
+  position: absolute;
+  bottom: 0; /* Positionne le soulignement en bas du lien */
+  left: 0;
+  width: 100%;
+  height: 3px; /* Épaisseur du soulignement */
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Section droite : Bouton et Panier */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  /* Styles de base pour tous les boutons */
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px; /* Boutons arrondis */
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent-color); /* Couleur accent pour le bouton principal */
+  color: white;
+  margin-right: 1.5rem;
+}
+
+.btn-primary:hover {
+  background-color: darken(var(--accent-color), 10%); /* Assombrir au survol */
+  transform: translateY(-2px); /* Léger effet de soulèvement */
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 1.8rem; /* Taille de l'icône de panier */
+  color: var(--text-color);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.cart-icon:hover {
+  color: var(--primary-color);
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px; /* Positionne le badge au-dessus de l'icône */
+  right: -10px;
+  background-color: #dc3545; /* Rouge pour le compteur */
+  color: white;
+  border-radius: 50%; /* Forme circulaire */
+  padding: 0.2em 0.5em;
+  font-size: 0.75rem;
+  font-weight: bold;
+  line-height: 1; /* Assure que le texte est bien centré */
+  min-width: 20px; /* Taille minimale pour les nombres à 1 ou 2 chiffres */
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Burger menu pour la responsivité (caché par défaut sur desktop) */
+.burger-menu {
+  display: none; /* Cache le burger menu sur les grands écrans */
+  cursor: pointer;
+  /* Styles pour les lignes du burger */
+  .line {
+    width: 28px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 6px 0;
+    transition: all 0.3s ease;
+  }
+}
+
+/* Media Queries pour la responsivité (smartphones, tablettes) */
+@media (max-width: 992px) { /* Pour les tablettes et plus petits */
+  .main-navbar {
+    padding: 1rem 1.5rem;
+  }
+  .navbar-links li {
+    margin: 0 0.8rem;
+  }
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+    margin-right: 1rem;
+  }
+  .cart-icon {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) { /* Pour les smartphones */
+  .main-navbar {
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-left {
+    flex-grow: 1; /* Permet au logo de prendre de l'espace */
+  }
+
+  .navbar-center {
+    order: 3; /* Déplace les liens en bas de la navbar */
+    flex-basis: 100%; /* Les liens prennent toute la largeur */
+    margin-top: 1rem; /* Marge au-dessus des liens */
+    display: none; /* Cacher par défaut, sera affiché par JS avec un toggle */
+  }
+
+  .navbar-center.open { /* Classe ajoutée par JS/TS pour afficher le menu */
+    display: block;
+  }
+
+  .navbar-links {
+    flex-direction: column; /* Empile les liens verticalement */
+    border-top: 1px solid var(--light-gray);
+  }
+
+  .navbar-links li {
+    margin: 0;
+    border-bottom: 1px solid var(--light-gray); /* Séparateur entre les liens */
+  }
+
+  .navbar-links li:last-child {
+    border-bottom: none;
+  }
+
+  .navbar-links a {
+    display: block; /* Chaque lien prend toute la largeur */
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .navbar-links a.active::after {
+    bottom: auto; /* Supprime le soulignement spécifique sur mobile */
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .navbar-right {
+    order: 2; /* Positionne les actions avant le menu burger si nécessaire */
+    margin-left: auto; /* Pousse les actions à droite */
+  }
+
+  .btn-primary {
+    display: none; /* Cache le bouton "Mon Compte" sur mobile pour économiser de l'espace, à adapter */
+  }
+
+  .cart-icon {
+    margin-left: 1rem;
+  }
+
+  .burger-menu {
+    display: block; /* Affiche le burger menu sur mobile */
+    order: 1; /* Assure que le burger est bien positionné */
+    margin-left: 1.5rem; /* Espace entre le panier et le burger */
+  }
+}
