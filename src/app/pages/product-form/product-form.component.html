@@ -1,20 +1,25 @@
-<div class="form-box">
-  <h3>{{ isEdit ? 'Modifier le produit' : 'Ajouter un produit' }}</h3>
+<h2>{{ isEdit ? 'Modifier' : 'Ajouter' }} un produit</h2>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
 
   <label>Nom</label>
-  <input [(ngModel)]="model.name" placeholder="Nom du produit">
+  <input formControlName="name" type="text" />
 
   <label>Description</label>
-  <textarea [(ngModel)]="model.description" placeholder="Description"></textarea>
+  <textarea formControlName="description"></textarea>
 
-  <label>Prix (FCFA)</label>
-  <input type="number" [(ngModel)]="model.price" placeholder="Prix">
+  <label>Prix</label>
+  <input formControlName="price" type="number" />
 
-  <label>Image URL (optionnel)</label>
-  <input [(ngModel)]="model.image_url" placeholder="https://...">
+  <label>Image</label>
+  <input type="file" (change)="onFileChange($event)" />
 
-  <div style="margin-top:10px;">
-    <button (click)="onSaveClick()">{{ isEdit ? 'Mettre à jour' : 'Ajouter' }}</button>
-    <button (click)="onCancelClick()" style="margin-left:8px;">Annuler</button>
+  <!-- 🔥 Preview -->
+  <div *ngIf="previewUrl" class="preview">
+    <img [src]="previewUrl" alt="preview" width="150" />
   </div>
-</div>
+
+  <button type="submit">
+    {{ isEdit ? 'Mettre à jour' : 'Ajouter' }}
+  </button>
+</form>

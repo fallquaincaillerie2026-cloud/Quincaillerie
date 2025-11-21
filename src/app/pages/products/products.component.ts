@@ -18,9 +18,10 @@ export class ProductsComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.products = await this.supabase.getProducts();
+      this.products = (await this.supabase.getProducts()) ?? [];
     } catch (err) {
       console.error('Erreur lors du chargement des produits', err);
+      this.products = [];
     }
     this.loading = false;
   }
